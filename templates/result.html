@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Classification Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .container {
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .result {
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 4px;
+        }
+        .spam {
+            background-color: #ffebee;
+            border: 1px solid #ffcdd2;
+        }
+        .not-spam {
+            background-color: #e8f5e9;
+            border: 1px solid #c8e6c9;
+        }
+        .message {
+            background-color: white;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Classification Result</h1>
+        <div class="result {{ 'spam' if prediction == 'SPAM' else 'not-spam' }}">
+            <h2>Prediction: {{ prediction }}</h2>
+            <p>Confidence: {{ confidence }}</p>
+        </div>
+        <div class="message">
+            <h3>Analyzed Message:</h3>
+            <p>{{ message }}</p>
+        </div>
+        <a href="{{ url_for('home') }}"><button>Analyze Another Message</button></a>
+    </div>
+</body>
+</html>
